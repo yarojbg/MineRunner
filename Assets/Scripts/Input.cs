@@ -8,40 +8,6 @@ namespace InputWrapper
 	{
 
 
-		public static bool GetButton(string buttonName)
-		{
-			return UnityEngine.Input.GetButton(buttonName);
-		}
-
-		public static bool GetKey(KeyCode keyCode)
-		{
-			return UnityEngine.Input.GetKey(keyCode);
-		}
-
-		public static bool GetButtonDown(string buttonName)
-		{
-			return UnityEngine.Input.GetButtonDown(buttonName);
-		}
-
-		public static bool GetButtonUp(string buttonName)
-		{
-			return UnityEngine.Input.GetButtonUp(buttonName);
-		}
-
-		public static bool GetMouseButton(int button)
-		{
-			return UnityEngine.Input.GetMouseButton(button);
-		}
-
-		public static bool GetMouseButtonDown(int button)
-		{
-			return UnityEngine.Input.GetMouseButtonDown(button);
-		}
-
-		public static bool GetMouseButtonUp(int button)
-		{
-			return UnityEngine.Input.GetMouseButtonUp(button);
-		}
 
 		public static int touchCount
 		{
@@ -105,12 +71,12 @@ namespace InputWrapper
 		{
 			get
 			{
-				update();
+				Update();
 				return fakeTouch;
 			}
 		}
 
-		void update()
+		void Update()
 		{
 			if (Time.time != lastUpdateTime)
 			{
@@ -120,7 +86,7 @@ namespace InputWrapper
 				var delta = curMousePos - prevMousePos;
 				prevMousePos = curMousePos;
 
-				fakeTouch = createTouch(GetPhase(), delta);
+				fakeTouch = CreateTouch(GetPhase(), delta);
 			}
 		}
 
@@ -144,7 +110,7 @@ namespace InputWrapper
 			}
 		}
 
-		static Touch? createTouch(TouchPhase? phase, Vector3 delta)
+		static Touch? CreateTouch(TouchPhase? phase, Vector3 delta)
 		{
 			if (!phase.HasValue)
 			{

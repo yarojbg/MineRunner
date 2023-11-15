@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -14,7 +12,6 @@ public class Enemy : MonoBehaviour
 		_rigidbody = GetComponent<Rigidbody>();
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 		_rigidbody.velocity = (Player.instance.transform.position - transform.position).normalized * _speed;

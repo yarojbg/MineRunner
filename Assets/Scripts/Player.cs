@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Input = InputWrapper.Input;
 
@@ -56,7 +54,7 @@ public class Player : MonoBehaviour
         {
             Instantiate(_explosion, collision.contacts[0].point, Quaternion.identity);
             _defeatWindow.gameObject.SetActive(true);
-
+            this.enabled = false;
         }
 	}
 }
