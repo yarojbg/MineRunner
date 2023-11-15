@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private GameObject _explosion;
 
     [SerializeField]
-    private GameObject _defeatWindow;
+    private UIManager _defeatWindow;
 
     [SerializeField]
     private float _speed;
@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
         {
             _joystickPosition = touch.position;
         }
+        else if(touch.phase == TouchPhase.Ended )
+        {
+            _rigidbody.velocity = Vector3.zero;
+
+		}
         else
         {
             var direction = touch.position - _joystickPosition;
@@ -47,16 +52,11 @@ public class Player : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
     {
-        print("layers?");
         if (collision.gameObject.layer == Layers.Enemy || collision.gameObject.layer == Layers.Mine)
         {
-            print("hello");
             Instantiate(_explosion, collision.contacts[0].point, Quaternion.identity);
-            _defeatWindow.SetActive(true);
-        }
-        else
-        {
-            print(collision.gameObject.layer);
+            _defeatWindow.gameObject.SetActive(true);
+
         }
 	}
 }
