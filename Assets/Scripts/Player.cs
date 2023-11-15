@@ -1,5 +1,4 @@
 using UnityEngine;
-using Input = InputWrapper.Input;
 
 public class Player : MonoBehaviour
 {
